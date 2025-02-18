@@ -1,5 +1,7 @@
 import pygame
 
+objects=[]
+
 def label(screen, text, pos, color=[255, 0, 255], size=48, f=None):
     font = pygame.font.Font(f, size)
     text_render = font.render(text, False, color)
@@ -29,15 +31,12 @@ class Button:
         pygame.draw.rect(self.screen, self.rect, self.bg)
         label(self.screen, self.text, [self.rect.x, self.rect.y])"""
 
-    def draw(self, mrect):
+    def draw(self):
         self.bg = self.bg0.copy()
-        if self.rect.colliderect(mrect.prect):
-            self.func()
 
         pygame.draw.rect(self.screen, self.bg, self.rect.prect)
         label(self.screen, self.text, self.text_pos, self.color, self.size)
 
-    """def check(self, mrect):
-        # self.mrect = mrect
+    def check(self, mrect):
         if self.rect.colliderect(mrect.prect):
-            self.func()"""
+            self.func()
