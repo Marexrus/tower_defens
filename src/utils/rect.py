@@ -1,0 +1,30 @@
+import pygame
+
+objects=[]
+
+class Rect:
+    def __init__(self, x, y, width, height, camera=False,add=True):
+        self.id = 'rect'
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.camera = camera
+        self.prect = pygame.Rect(self.x, self.y, self.width, self.height)
+        if add:
+            objects.append(self)
+
+    def colliderect(self, c1):
+        self.prect = pygame.Rect(self.x, self.y, self.width, self.height)
+        c1 = pygame.Rect(c1.x, c1.y, c1.width, c1.height)
+        return self.prect.colliderect(c1)
+
+    def collidelist(self, arr):
+        self.prect = pygame.Rect(self.x, self.y, self.width, self.height)
+        for el in arr:
+            rr = pygame.Rect(el.x, el.y, el.width, el.height)
+            arr[arr.index(el)] = rr
+        return self.prect.collidelist(arr)
+
+    def draw(self, screen, color=[255, 0, 0]):
+        pygame.draw.rect(screen, color, self.prect)
