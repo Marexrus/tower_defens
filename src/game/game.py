@@ -1,5 +1,6 @@
 import pygame
 from src.utils.constants import *
+from src.ui.widgets import *
 
 FPS=144
 
@@ -16,6 +17,9 @@ class Game:
                     running = False
 
             self.screen.fill((58, 58, 58))
+
+            label(self.screen,"Helo world",[100,100])
+
             pygame.display.flip()
             self.clock.tick(FPS)
 
