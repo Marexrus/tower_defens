@@ -1,4 +1,5 @@
 import pygame
+from src.utils.constants import *
 
 FPS=144
 
