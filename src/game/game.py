@@ -1,18 +1,22 @@
 import pygame
 from src.utils.constants import *
 from src.utils.rect import *
+from src.utils.tile import *
+from src.utils.gameboard import *
 from src.ui.widgets import *
 
 FPS=144
 
 class Game:
     def __init__(self):
-        self.screen = pygame.display.set_mode((800, 600),pygame.NOFRAME)
+        self.screen = pygame.display.set_mode(window_size,pygame.NOFRAME)
         self.clock = pygame.time.Clock()
         self.button=Button(self.screen,lambda:print(1),Rect(200,200,100,100),"hello")
         self.mrect=None
 
     def run(self):
+        gameboard_init()
+
         running = True
         while running:
             self.mrect=None
@@ -24,12 +28,13 @@ class Game:
 
 
             self.screen.fill((58, 58, 58))
+            gameboard_draw(self.screen)
 
-            label(self.screen,"Helo world",[100,100])
+            """label(self.screen,"Helo world",[100,100])
             self.button.draw()
 
             if self.mrect:
-                self.button.check(self.mrect)
+                self.button.check(self.mrect)"""
                 
             pygame.display.flip()
             self.clock.tick(FPS)
