@@ -6,6 +6,7 @@
 #4 - finish
 
 class Tile:
-    def __init__(self,pos,type):
-        self.pos=pos
+    def __init__(self,abspos,relpos,type):
+        self.abspos=abspos
+        self.relpos=relpos
         self.type=type
