@@ -18,6 +18,10 @@ class Tile:
         self.rect=Rect(self.abspos[0],self.abspos[1],tile_size[0],tile_size[1])
 
         camera_objects.append(self)
+    
+    def draw(self,screen):
+        pygame.draw.rect(screen,[255,255,255],[self.abspos[0],self.abspos[1],tile_size[0],tile_size[1]])
+        pygame.draw.rect(screen,[0,0,255],[self.abspos[0],self.abspos[1],tile_size[0],tile_size[1]],1)
 
 def gameboard_init():
         global gameboard
@@ -30,9 +34,3 @@ def gameboard_init():
                 rx+=1
             rx=0
             ry+=1
-    
-def gameboard_draw(screen):
-    global gameboard
-    for el in gameboard:
-        if el.type == 0:
-            pygame.draw.rect(screen,[255,255,255],[el.abspos[0],el.abspos[1],tile_size[0],tile_size[1]],2)
