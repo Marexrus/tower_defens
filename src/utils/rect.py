@@ -3,7 +3,7 @@ import pygame
 objects=[]
 
 class Rect:
-    def __init__(self, x, y, width, height, camera=False,add=True):
+    def __init__(self, x, y, width, height, camera=False,add=False):
         self.id = 'rect'
         self.x = x
         self.y = y

@@ -1,7 +1,6 @@
 import pygame
 from src.utils.constants import *
 from src.utils.rect import *
-from src.utils.tile import *
 from src.utils.gameboard import *
 from src.ui.widgets import *
 
@@ -19,7 +18,7 @@ class Game:
 
         running = True
         while running:
-            self.mrect=None
+            self.mrect=Rect(10000,10000,1,1)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -29,6 +28,10 @@ class Game:
 
             self.screen.fill((58, 58, 58))
             gameboard_draw(self.screen)
+
+            for el in gameboard:
+                if el.rect.colliderect(self.mrect):
+                    print(el.relpos)
 
             """label(self.screen,"Helo world",[100,100])
             self.button.draw()
