@@ -1,8 +1,7 @@
 import pygame
 from src.utils.constants import *
 from src.utils.rect import *
-
-gameboard=[]
+#from src.game.game import camera
 
 #tile types
 #0 - empty tile (tile for building towers)
@@ -18,11 +17,14 @@ class Tile:
         self.type=type
         self.rect=Rect(self.abspos[0],self.abspos[1],tile_size[0],tile_size[1])
 
+        camera_objects.append(self)
+
 def gameboard_init():
         global gameboard
-        rx,ry=0,0
-        for y in range(0,window_size[1],tile_size[1]):
-            for x in range(0,window_size[0],tile_size[0]):
+        size=[-1000,-1000]
+        rx,ry=size[0],size[1]
+        for y in range(size[0],window_size[1],tile_size[1]):
+            for x in range(size[1],window_size[0],tile_size[0]):
                 relpos=[rx,ry]
                 gameboard.append(Tile([x,y],relpos,0))
                 rx+=1
